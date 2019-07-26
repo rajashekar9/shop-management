@@ -1,0 +1,30 @@
+{
+  "name": "functions",
+  "version": "1.0.0",
+  "description": "This service is aimed for registering users based on their roles",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npm test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajashekar9/shop-managemen.git"
+  },
+  "author": "Rajashekar D",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajashekar9/shop-managemen/issues"
+  },
+  "homepage": "https://github.com/rajashekar9/shop-managemen#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "util": "^0.12.1",
+    "uuid": "^3.3.2",
+    "body-parser": "^1.19.0"
+  }
+}
