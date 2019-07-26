@@ -5,11 +5,16 @@ This is the assignment project for registering users based on their roles
 
 ### Prequisties:
 Docker need to be installed in your machine
+Node.js should be installed in your host machine
 
 #### Run the application:
 
-    1. Navigate to the project root repository and run the following command
-        - 'docker-compose up -d'
+    1. Navigate to the project root repository and run the following commands
+        - "cd functions" (Navigate to functions folder which contains package.json)
+        - "npm install" (Installs all the dependencies for the project)
+        - "cd .."
+        - "docker build -t node_server ." (This command need to be run at location of Dockerfile to build node_server image)
+        - 'docker-compose up -d' (This command need to be run at location of docker-compose.yml)
 
         By running the above command both mysql server and node server will be started. By default database with name 'shop' will be created along with the tables users, user_roles in the mysql server
 
@@ -75,9 +80,11 @@ First Database and tables should be created in MySQL server. For that Run the fo
         FOREIGN KEY (user_id) REFERENCES users(user_id)
     );
 
-Now navigate to project root repository in command prompt and run the following command to start the project
-    - "npm start" or "node index.js"
-    BY running the above command node server will be running on your localhost on port 5001
+Now navigate to project root repository in command prompt and run the following commands to start the project
+    - "cd functions" (Navigates to functions folder where you have package.json)
+    - "npm install" (By running this command it will install all the required dependencies)
+    - "npm start" or "node index.js" (BY running this command node server will be running on your localhost on port 5001)
+    
 
 Note: There is a chance of getting authentication issue when accessing the database from the node. If you are facing this issue while registering the users then follow the following steps to get rid out of it
 
