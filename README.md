@@ -9,32 +9,32 @@ Node.js should be installed in your host machine
 
 #### Run the application:
 
-1. Navigate to the project root repository and run the following commands
-    - "cd functions" (Navigate to functions folder which contains package.json)
-    - "npm install" (Installs all the dependencies for the project)
-    - "cd .."
-    - "docker build -t node_server ." (This command need to be run at location of Dockerfile to build node_server image)
-    - 'docker-compose up -d' (This command need to be run at location of docker-compose.yml)
+    1. Navigate to the project root repository and run the following commands
+        - "cd functions" (Navigate to functions folder which contains package.json)
+        - "npm install" (Installs all the dependencies for the project)
+        - "cd .."
+        - "docker build -t node_server ." (This command need to be run at location of Dockerfile to build node_server image)
+        - 'docker-compose up -d' (This command need to be run at location of docker-compose.yml)
 
-    By running the above command both mysql server and node server will be started. By default database with name 'shop' will be created along with the tables users, user_roles in the mysql server
+        By running the above command both mysql server and node server will be started. By default database with name 'shop' will be created along with the tables users, user_roles in the mysql server
 
-2. Run the following command to know whether the two containers are up and running
-    - 'docker ps'
+    2. Run the following command to know whether the two containers are up and running
+        - 'docker ps'
 
-    Now, you should be able to see the following 
-    
-    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
-3fc94c3fdbb0        node_server         "node /usr/src/app/f…"   22 seconds ago      Up 20 seconds       0.0.0.0:5001->5001/tcp              node
-8435b6e5e71a        mysql               "docker-entrypoint.s…"   22 seconds ago      Up 22 seconds       0.0.0.0:3306->3306/tcp, 33060/tcp   mysql
+        Now, you should be able to see the following 
+        
+        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
+    3fc94c3fdbb0        node_server         "node /usr/src/app/f…"   22 seconds ago      Up 20 seconds       0.0.0.0:5001->5001/tcp              node
+    8435b6e5e71a        mysql               "docker-entrypoint.s…"   22 seconds ago      Up 22 seconds       0.0.0.0:3306->3306/tcp, 33060/tcp   mysql
 
-3. You can check the container logs using docker logs containerName (containerName can be either mysql or node)
-4. There is a chance of getting authentication issue when accessing the database from the node hence, run the following commands to get rid out of it
-    - 'docker exec -it mysql /bin/bash' (By running this command you will be entering into the mysql contianer shell)
-    - 'mysql -uroot -prootpassword' (By running this command, you will be logged into mysql server as root)
-    - 'ALTER USER root IDENTIFIED WITH mysql_native_password BY 'rootpassword';
-    - 'exit' (By running this command you will come out of the mysql server);
-    - 'exit' (By running this command you will come out of the mysql container shell);
-    - 'docker-compose up -d --force-recreate' (By running this command the two containers will recreated forcefully);
+    3. You can check the container logs using docker logs <containerName>
+    4. There is a chance of getting authentication issue when accessing the database from the node hence, run the following commands to get rid out of it
+        - 'docker exec -it mysql /bin/bash' (By running this command you will be entering into the mysql contianer shell)
+        - 'mysql -uroot -prootpassword' (By running this command, you will be logged into mysql server as root)
+        - 'ALTER USER root IDENTIFIED WITH mysql_native_password BY 'rootpassword';
+        - 'exit' (By running this command you will come out of the mysql server);
+        - 'exit' (By running this command you will come out of the mysql container shell);
+        - 'docker-compose up -d --force-recreate' (By running this command the two containers will recreated forcefully);
 
 ### Registering users
 
@@ -88,12 +88,11 @@ Now navigate to project root repository in command prompt and run the following 
 
 Note: There is a chance of getting authentication issue when accessing the database from the node. If you are facing this issue while registering the users then follow the following steps to get rid out of it
 
-- Stop the node project by pressing ctrl+c
-- Open the mysql-client and run the following command to alter the user
-    - 'ALTER USER root@'localhost' IDENTIFIED WITH mysql_native_password BY 'rootpassword'; and then
-    - 'exit' (To come out of the mysql client)
-- Now start the project by running following command in the project root repository from command line
-    - 'npm start' 
+    - Stop the node project by pressing ctrl+c
+    - Open the mysql-client and run the following command to alter the user
+        - 'ALTER USER root@'localhost' IDENTIFIED WITH mysql_native_password BY 'rootpassword'; and then
+        - 'exit' (To come out of the mysql client)
+    - Now start the project by running 'npm start' in the project root repository from command line
 
 ## Registering users
 
