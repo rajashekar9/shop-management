@@ -33,17 +33,20 @@ Docker need to be installed in your machine
 
 ### Registering users
 
-You need to send a post request to 'http://<yourMachineIpAddress>:5001/users' //yourMachineIpAddress means ip address of the machine on which docker is running
+You need to send a post request to 'http://yourMachineIpAddress:5001/users'
+(yourMachineIpAddress means ip address of the machine on which docker is running)
 
 User details need to be sent in request body as follows:
 
 let body = {
-    userName: <userName>,
-    gender: <gender>,
-    city: <city>
+    userName: userName,
+    gender: gender,
+    city: city
 }
 
 Only the first registered user will be assigned 'admin' as his/her role. Rest of the users will have different roles
+
+After firing a request you can see the message 'Successfully registered the user'
 
 ## Project setup in local machine:
 
@@ -90,9 +93,11 @@ You need to send a post request to 'http://127.0.0.1:5001/users'
 User details need to be sent in request body as follows:
 
 let body = {
-    userName: <userName>,
-    gender: <gender>,
-    city: <city>
+    userName: userName,
+    gender: gender,
+    city: city
 }
 
 Only the first registered user will be assigned 'admin' as his/her role. Rest of the users will have different roles
+
+After firing a request you can see the message 'Successfully registered the user'
