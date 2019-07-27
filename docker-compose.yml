@@ -18,7 +18,7 @@ services:
       # Where our data will be persisted
     volumes:
       - /shop/mysql_data:/var/lib/mysql
-      - ./init:/docker-entrypoint-initdb.d/:ro
+      - /media/sf_LinuxSharedFolder/shop-management/init:/docker-entrypoint-initdb.d/:ro
     hostname: mysql
   users:
     image: node_server
@@ -35,5 +35,10 @@ services:
     links:
       - mysql
     hostname: users
+  swagger:
+    image: swaggerapi/swagger-editor
+    container_name: swagger
+    ports:
+      - '8080:8080'
 
 

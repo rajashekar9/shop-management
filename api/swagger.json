@@ -1,0 +1,137 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Shop-management - users microservice",
+      "description": "This microservice depicts the endpoints aiming at addressing user related functionality for shop-management.",
+      "termsOfService": "http://shopmanagement.app/policy/termsOfUse",
+      "contact": {
+        "email": "api@shopmanagement.app"
+      },
+      "license": {
+        "name": "Private and propritery"
+      },
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "https://shopmanagement.app/api"
+      }
+    ],
+    "tags": [
+      {
+        "name": "registration",
+        "description": "Shop Management - Registration operations",
+        "externalDocs": {
+          "description": "Find out more",
+          "url": "http://shopmanagement.app"
+        }
+      }
+    ],
+    "paths": {
+      "/users": {
+        "post": {
+          "tags": [
+            "registration"
+          ],
+          "summary": "User registration",
+          "description": "Verifying the user details(username, gender and city) and responding message",
+          "operationId": "userRegistration",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRequestModel"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully registered the user",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserResponseModel"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Requested resource not found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorModel"
+                  }
+                }
+              }
+            },
+            "405": {
+              "description": "Invalid Input",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorModel"
+                  }
+                }
+              }
+            }
+          },
+          "x-swagger-router-controller": "Registration"
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "UserRequestModel": {
+          "required": [
+            "userName",
+            "gender",
+            "city"
+          ],
+          "type": "object",
+          "properties": {
+            "userName": {
+              "type": "string"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            }
+          }
+        },
+        "UserResponseModel": {
+          "required": [
+            "code",
+            "message"
+          ],
+          "properties": {
+            "code": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "message": {
+              "type": "string"
+            }
+          }
+        },
+        "ErrorModel": {
+          "required": [
+            "code",
+            "message"
+          ],
+          "properties": {
+            "code": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "message": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+}

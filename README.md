@@ -16,7 +16,11 @@ Node.js should be installed in your host machine
         - "docker build -t node_server ." (This command need to be run at location of Dockerfile to build node_server image)
         - 'docker-compose up -d' (This command need to be run at location of docker-compose.yml)
 
-        By running the above command both mysql server and node server will be started. By default database with name 'shop' will be created along with the tables users, user_roles in the mysql server
+        By running the above command both mysql server, node server and swagger-editor will be started. By default database with name 'shop' will be created along with the tables users, user_roles in the mysql server
+
+        You can see the schema of the service by accessing swagger which is running on port 8080 i.e http://yourMachineIpAddress:8080
+        After opening swagger editor in browser copy the swagger.yaml file which is at location api/swagger.yaml in the project and paste in the swagger editor.
+        Now you can see the schema of the service 
 
     2. Run the following command to know whether the two containers are up and running
         - 'docker ps'
